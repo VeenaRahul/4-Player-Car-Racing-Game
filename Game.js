@@ -66,18 +66,23 @@ class Game{
 
     // for cars array
     var index = 0;
+    // x is needed to capture x coordinate for drawing the circle not to display car
     var x = 350;
-    var y;
+
+   // starting position of all cars
+    var y = 600;
 
     for(plr in allPlayers){
 
-      // spot the car
+      // fill the data from database into cars array for y position for all players so that position of cars are consistent
+      cars[index].x = x;
+      y = 600 - allPlayers[plr].distance;
+      cars[index].y = y;
+      
+
+      // spot the car player index has the no eg 1, 2, 3, 4 and index starts from 0 for cars array
       if(player.index == index + 1){
 
-        cars[index].x = x;
-        y = displayHeight - player.distance;
-        cars[index].y = y;
-       
         camera.position.y = cars[index].y;
 
         fill ("red");
@@ -87,7 +92,7 @@ class Game{
       // so that only the current car text is in red
       else fill ("black");
       
-
+      // update the x position for car and index for cars array
       x += 200;
       index ++;
 
